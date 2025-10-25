@@ -1,48 +1,52 @@
 
-7.Write an assembly language program in 8086 to find the factorial of a given  number and store the result in memory
+15.Write an assembly language program in 8051 to exchange the contents of two memory blocks of equal length.
 
 ## Aim
 
-To develop an 8086 Assembly Language program that computes the factorial of a given integer and stores the result in memory
+To develop an 8051 Assembly Language program that generates the contents of two memory blocks of equal length and stores them in RAM.
 
 ## Apparatus Required
 
-8086 Microprocessor Emulator (e.g., EMU8086, DOSBox, or MASM/TASM assembler).​
-PC or laptop with Windows/macOS/Linux.
-Text editor or IDE to write assembly code.
-Basic knowledge of 8086 instructions and registers.
+1. 8051 Microcontroller or Emulator (e.g., Keil µVision)
+2. PC/Laptop with Windows/macOS/Linux
+3. Text editor or IDE to write and assemble 8051 assembly code
+4. Basic knowledge of 8051 instructions and registers
 
 ## Algorithm
 
-Initialize registers for storage (e.g., CX for counter, AX for result).
-Load the number (N) for which the factorial is to be computed.
-Set the result register (AX) to 1.
-Repeat until the counter is zero:
-Multiply AX by the counter value.
-Decrement counter.
-Store result in memory.
-End program.
+1. Initialize pointers (R0, R1) to point to the start of the two memory blocks.
+2. Load a counter (R2) with the length of the blocks.
+3. Repeat until the counter is zero:
+4. Generate or copy content to memory block 1.
+5. Generate or copy content to memory block 2.
+6. Increment memory pointers.
+7. Decrement counter.
+8. End program when all memory locations are filled.
 
 ## Program
-code segment
-assume cs:code
-start:
-mov cx, 05h
-mov ax, 01h
-factorial_loop:
-mul cx
-loop factorial_loop
-mov ah, 4ch
-int 21h
-code ends
-end
-
+ORG 0OH
+SJMP 30H
+ORG 30H
+MOV RO, #30H
+MOV R1, #40H
+MOV R2,#OSH
+LOOP:
+MOV A, GRO
+XCH A, @R1
+MOV @RO, A
+INC RO
+INC R1
+DJNZ R2, LOOP
+HERE:SJMP HERE
+END
 ## Output
-![WhatsApp Image 2025-10-14 at 20 24 06_cc43c68f](https://github.com/user-attachments/assets/b7fa9e41-f81d-4987-b23e-f2c8634557f8)
-![WhatsApp Image 2025-10-14 at 20 22 04_83e9bb96](https://github.com/user-attachments/assets/abb2649d-4bcf-4c43-ac92-001938ae1dc8)
+
+<img width="1920" height="1200" alt="Screenshot (3467)" src="https://github.com/user-attachments/assets/084f45eb-7d90-4b2e-b5a0-f427edb67fbe" />
+<img width="1920" height="1200" alt="Screenshot (3468)" src="https://github.com/user-attachments/assets/1191e928-35d1-41aa-a296-399de6e31d60" />
+<img width="1920" height="1200" alt="Screenshot (3469)" src="https://github.com/user-attachments/assets/4f3d3549-a20f-40a3-ac8c-b657fb3daef6" />
+<img width="1920" height="1200" alt="Screenshot (3470)" src="https://github.com/user-attachments/assets/c2754062-8f6a-48e0-b615-58479efab0c9" />
 
 ## Result
-The program successfully calculates and stores the factorial of a given number in memory, demonstrating correct use of loop and arithmetic instructions in the 8086 microprocessor.
-
+The program successfully generates the contents of two memory blocks of equal length and stores them in RAM.
 
 
